@@ -149,11 +149,13 @@ function createArticle(obj) {
     par1.textContent = obj.firstParagraph; 
     par2.textContent = obj.secondParagraph; 
     par3.textContent = obj.thirdParagraph; 
+    expandButton.textContent = 'expand'; 
+
+    // event listener 
+    expandButton.addEventListener('click', () => article.classList.toggle('article-open')); 
 
   return article; 
 
 }
 
-createArticle(data[0]); 
-createArticle(data[1]); 
-createArticle(data[2]); 
+data.map(data => createArticle(data)); 
