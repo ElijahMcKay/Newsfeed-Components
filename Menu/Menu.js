@@ -31,5 +31,43 @@ let menuItems = [
   Step 5: return the menu component.
 
   Step 6: add the menu component to the DOM.
+
+    <div class="menu">
+    <ul>
+      {each menu item as a list item}
+    </ul>
+  </div>
   
 */
+
+function newItem(arr) {
+
+  //creating elements 
+  const hamburger = document.querySelector('.menu-button'); 
+  const menu = document.createElement('div'); 
+  const list = document.createElement('ul'); 
+  let listItems = arr.map(item => {
+    document.createElement('li'); 
+    item.textContent = item; 
+  }); 
+  // const menuItem = document.createElement('li'); 
+
+  //class names 
+  menu.classList.add('menu'); 
+  // list.classList.add('list-items'); 
+
+  //structure 
+  hamburger.appendChild(menu); 
+  menu.appendChild(list); 
+  list.appendChild(listItems); 
+
+  //text content 
+
+  hamburger.addEventListener('click', () => menu.classList.toggle('menu--open'))
+
+  return menu; 
+
+}
+
+newItem(menuItems); 
+
