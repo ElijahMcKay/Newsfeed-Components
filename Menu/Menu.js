@@ -44,29 +44,28 @@ function newItem(arr) {
 
   //creating elements 
   const hamburger = document.querySelector('.menu-button'); 
+  const header = document.querySelector('.header'); 
   const menu = document.createElement('div'); 
   const list = document.createElement('ul'); 
-  let listItems = arr.map(item => {
-    document.createElement('li'); 
-    item.textContent = item; 
-  }); 
-  // const menuItem = document.createElement('li'); 
 
-  //class names 
+  //class names
   menu.classList.add('menu'); 
-  // list.classList.add('list-items'); 
 
   //structure 
-  hamburger.appendChild(menu); 
+  header.appendChild(menu); 
   menu.appendChild(list); 
-  list.appendChild(listItems); 
 
+  
   //text content 
+  arr.forEach(item => {
+    let menuItem = document.createElement('li');
+    menuItem.textContent = item; 
+    list.appendChild(menuItem); 
+  }); 
 
   hamburger.addEventListener('click', () => menu.classList.toggle('menu--open'))
 
   return menu; 
-
 }
 
 newItem(menuItems); 
