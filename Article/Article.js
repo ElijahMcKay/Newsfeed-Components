@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+  title: 'The Day I Was Born ',
+  date: 'Jan 15th, 1998',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+        hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+        Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+        hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+        hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+        hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+        Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+        Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +128,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+
+function createArticle(obj) {
+    
+  // define new elements
+    const articles = document.querySelector('.articles'); 
+    const article = document.createElement('div'); 
+    const artTitle = document.createElement('h2'); 
+    const date = document.createElement('p'); 
+    const par1 = document.createElement('p'); 
+    const par2 = document.createElement('p'); 
+    const par3 = document.createElement('p'); 
+    const expandButton = document.createElement('span'); 
+
+    //setup structre of elements 
+    articles.appendChild(article); 
+    article.appendChild(artTitle); 
+    article.appendChild(date); 
+    article.appendChild(par1); 
+    article.appendChild(par2);
+    article.appendChild(par3); 
+    article.appendChild(expandButton);  
+
+    //set class names 
+    article.classList.add('article');
+    date.classList.add('date'); 
+    par1.classList.add('par1'); 
+    par2.classList.add('par2'); 
+    par3.classList.add('par3'); 
+    expandButton.classList.add('expandButton'); 
+
+    //set text content
+    artTitle.textContent = obj.title; 
+    date.textContent = obj.date; 
+    par1.textContent = obj.firstParagraph; 
+    par2.textContent = obj.secondParagraph; 
+    par3.textContent = obj.thirdParagraph; 
+    expandButton.textContent = 'expand'; 
+
+    // event listener 
+    expandButton.addEventListener('click', () => article.classList.toggle('article-open')); 
+
+  return article; 
+
+}
+
+data.map(data => createArticle(data)); 
